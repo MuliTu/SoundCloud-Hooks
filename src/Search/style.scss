@@ -1,0 +1,16 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  .search-results {
+    flex-basis: 86%;
+    overflow-y: scroll;
+  }
+  .next-button {
+    float: left;
+    margin: 2px;
+  }
+  .view-buttons {
+    float: right;
+    margin: 2px;
+  }
+}

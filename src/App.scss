@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  .container {
+    box-shadow: 2px 2px 1px gainsboro;
+    border: solid thin gainsboro;
+    flex-basis: 32%;
+    height: 500px;
+    margin: 3px;
+  }
+}
