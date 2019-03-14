@@ -1,10 +1,13 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import './style.scss'
-import Row from "../Tracks/Row";
+import Row from "../Row/Row";
 import IconButton from "../smallComponents/IconButton/IconButton";
 import Input from "../smallComponents/Input/Input";
+import {TracksDispatch} from "../App";
 
 export const Search = () => {
+    const dispatch = useContext(TracksDispatch);
+
     const INDEX_INCREMENT = 6;
     const [index, setIndex] = useState(0);
     const [imageView, setImageView] = useState(false);
@@ -14,15 +17,16 @@ export const Search = () => {
 
     const setResultHandler = (tracks) => setTracks(tracks);
 
-    const trackEntity = (x, index) => (
-        <div key={index}>
-            <Row index={index} data={x} imageView={imageView}/>
+    const trackEntity = (track, index) => (
+        <div key={index}
+             onClick={() => dispatch({type: 'TRACK', payload: track})}>
+            <Row index={index} data={track} imageView={imageView}/>
         </div>
     );
 
     return (
         <div className='container search'>
-            <Input resultHandler={setResultHandler}/>
+            <Input resultHandler={setResultHandler} dispatch={dispatch}/>
             <div className='search-results'>
                 {
                     tracks.map(trackEntity).slice(index, index + INDEX_INCREMENT % tracks.length)

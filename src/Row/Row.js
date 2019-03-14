@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import './style.scss'
+import {TracksDispatch} from "../App";
 const Row = ({data, index, imageView}) => {
-
     return (
         <div>
         {

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import {TracksDispatch} from "../App";
 
-const History = () => {
+const History = ({data}) => {
+
+    useEffect(()=>{},[data]);
+
     return (
         <div className='container'>
-            Here is going to be history
+            History
+            <div>{data.map(x => <div>{x}</div>).slice(0,5)}</div>
         </div>
     );
 };
