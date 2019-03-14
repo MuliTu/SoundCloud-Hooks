@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/SoundCloud-Hooks/precache-manifest.29f1b2c3be74d4d5275c93772a658cc2.js"
+  "/SoundCloud-Hooks/precache-manifest.e2f2c712c32dba3599ec5e695ab86dee.js"
 );
 
 workbox.clientsClaim();
