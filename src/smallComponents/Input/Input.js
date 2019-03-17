@@ -1,28 +1,38 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import IconButton from "../IconButton/IconButton";
 import {getTracks} from "../../functions";
 import './style.scss'
-import {TracksDispatch} from "../../App";
+import {useAppContext} from "../../hook";
 
 
-const Input = ({resultHandler}) => {
-    const dispatch = useContext(TracksDispatch);
-    const [query, setQuery] = useState('');
+const Input = () => {
+    const { dispatch, state:{query} } = useAppContext();
+    const [myQuery, setQuery] = useState('');
     const [results, setResults] = useState([]);
 
-    async function fetchDataFromAPI(query) {
-        setResults(await getTracks(query));
-        dispatch({type:'ADD_RECENT_SEARCH', payload:query})
-    }
+    const queryChangeHandler = (e) => setQuery(e.target.value);
 
-    useEffect(() => {
-        resultHandler(results)
-    });
+    useEffect(()=>{
+        if(query!== myQuery)
+        {
+            setQuery(query);
+            fetchDataFromAPI(query).finally()
+        }
+        dispatch({type: 'UPDATE_LIST', payload: results})
+    },[query,results]);
+
+    async function fetchDataFromAPI(query){
+        dispatch({type: 'UPDATE_QUERY', payload: query});
+        setResults(await getTracks(query));
+    };
 
     return (
         <div className='input-wrapper'>
-            <input className='input' placeholder={'Search...'} onChange={(e) => setQuery(e.target.value)}/>
-            <IconButton onClick={() => fetchDataFromAPI(query)} icon={'fa-search'}/>
+            <input className='input'
+                   value={myQuery}
+                   placeholder={'Search...'}
+                   onChange={queryChangeHandler}/>
+            <IconButton onClick={() => fetchDataFromAPI(myQuery)} icon={'fa-search'}/>
         </div>
     );
 };

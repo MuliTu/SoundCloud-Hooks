@@ -1,28 +1,22 @@
 import React, {useReducer, useEffect} from 'react';
+
 import './App.scss';
 import {Search} from "./Search/Search";
 import Image from "./Image/Image";
 import History from "./History/History";
-
-export const TracksDispatch = React.createContext(null);
+import reducer, {initialState} from "./state/reducer";
+import Context from './state/context'
 
 const App = () => {
-    const [state, dispatch] = useReducer(reducer, {
-        history: [],
-        currentTrack: {}
-    });
-
-    useEffect(() => {
-    console.log('updated',state);
-    },[state]);
+    const [state, dispatch] = useReducer(reducer,initialState);
 
     return (
         <div className="App">
-            <TracksDispatch.Provider value={dispatch}>
+            <Context.Provider value={{state, dispatch}}>
                 <Search/>
-                <Image data={state.currentTrack}/>
-                <History data={state.history}/>
-            </TracksDispatch.Provider>
+                <Image/>
+                <History/>
+            </Context.Provider>
         </div>
     );
 };
@@ -30,20 +24,3 @@ const App = () => {
 export default App;
 
 
-function reducer(state, action) {
-    switch (action.type) {
-        case 'ADD_RECENT_SEARCH':
-            state.history = [action.payload,...state.history];
-            return {...state, action};
-        case 'TRACK':
-            state.currentTrack = action.payload;
-            return {...state, action};
-
-        default:
-            console.log('this is state', state);
-            return state;
-
-
-    }
-
-}

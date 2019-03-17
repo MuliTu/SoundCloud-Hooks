@@ -1,14 +1,15 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {TracksDispatch} from "../App";
+import React from 'react';
+import {useAppContext} from "../hook";
 
-const History = ({data}) => {
-
-    useEffect(()=>{},[data]);
-
+const History = () => {
+    const { dispatch ,state:{history}} = useAppContext();
     return (
         <div className='container'>
-            History
-            <div>{data.map(x => <div>{x}</div>).slice(0,5)}</div>
+            Recent searches
+
+            {history.map(recentSearches =>
+                <div onClick={()=>dispatch({type:'HISTORY_GOT_CLICKED',payload:recentSearches})}>{recentSearches}</div>
+            ).slice(0,5)}
         </div>
     );
 };

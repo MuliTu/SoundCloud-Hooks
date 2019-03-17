@@ -1,11 +1,10 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React from 'react';
 import './style.scss'
-import {TracksDispatch} from "../App";
-const Row = ({data, index, imageView}) => {
+const Row = ({data, index, view}) => {
     return (
         <div>
         {
-            imageView?
+            view?
                 <div className='track art'>
                     <img  src={data.artwork_url} alt='poster' width={200}/>
                     <div className='track-data'>

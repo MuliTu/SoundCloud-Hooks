@@ -5,7 +5,9 @@
   flex-wrap: wrap;
   justify-content: center;
   margin: auto;
+
   .container {
+    min-width: 300px;
     box-shadow: 2px 2px 1px gainsboro;
     border: solid thin gainsboro;
     flex-basis: 32%;
