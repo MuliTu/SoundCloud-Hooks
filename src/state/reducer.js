@@ -1,5 +1,7 @@
+console.log('thuis is fromm reducer',localStorage.getItem('view') === 'true');
 
 export const initialState = {
+    viewMode:Boolean(localStorage.getItem('view') === 'true'),
     history:[],
     query:'',
     currentTrack: {},
@@ -20,6 +22,9 @@ const reducer = (state, action) => {
         case 'HISTORY_GOT_CLICKED':
         return {...state, query:action.payload};
 
+        case 'CHANGE_VIEW_MODE':
+            localStorage.setItem('view', action.payload);
+        return {...state, viewMode:action.payload};
         default:
             return state;
 

@@ -1,4 +1,4 @@
-import React, {useReducer, useEffect} from 'react';
+import React, { useReducer } from 'react';
 
 import './App.scss';
 import {Search} from "./Search/Search";
@@ -9,6 +9,7 @@ import Context from './state/context'
 
 const App = () => {
     const [state, dispatch] = useReducer(reducer,initialState);
+
 
     return (
         <div className="App">

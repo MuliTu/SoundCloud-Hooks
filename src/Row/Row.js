@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.scss'
+import {useAppContext} from "../hook";
 const Row = ({data, index, view}) => {
     return (
         <div>
@@ -10,7 +11,6 @@ const Row = ({data, index, view}) => {
                     <div className='track-data'>
                         {index + 1}. {data.title}
                     </div>
-
                 </div>
                 :
                 <div className='track'>
