@@ -1,13 +1,13 @@
 {
-  "main.css": "/SoundCloud-Hooks/static/css/main.428bf61a.chunk.css",
-  "main.js": "/SoundCloud-Hooks/static/js/main.9e8ceec2.chunk.js",
-  "main.js.map": "/SoundCloud-Hooks/static/js/main.9e8ceec2.chunk.js.map",
+  "main.css": "/SoundCloud-Hooks/static/css/main.8b8a8774.chunk.css",
+  "main.js": "/SoundCloud-Hooks/static/js/main.82ae67c3.chunk.js",
+  "main.js.map": "/SoundCloud-Hooks/static/js/main.82ae67c3.chunk.js.map",
   "runtime~main.js": "/SoundCloud-Hooks/static/js/runtime~main.a54e1860.js",
   "runtime~main.js.map": "/SoundCloud-Hooks/static/js/runtime~main.a54e1860.js.map",
-  "static/js/2.f767da06.chunk.js": "/SoundCloud-Hooks/static/js/2.f767da06.chunk.js",
-  "static/js/2.f767da06.chunk.js.map": "/SoundCloud-Hooks/static/js/2.f767da06.chunk.js.map",
+  "static/js/2.f8646b0e.chunk.js": "/SoundCloud-Hooks/static/js/2.f8646b0e.chunk.js",
+  "static/js/2.f8646b0e.chunk.js.map": "/SoundCloud-Hooks/static/js/2.f8646b0e.chunk.js.map",
   "index.html": "/SoundCloud-Hooks/index.html",
-  "precache-manifest.e2f2c712c32dba3599ec5e695ab86dee.js": "/SoundCloud-Hooks/precache-manifest.e2f2c712c32dba3599ec5e695ab86dee.js",
+  "precache-manifest.fd3f52dd224ef86cc22032a3453be762.js": "/SoundCloud-Hooks/precache-manifest.fd3f52dd224ef86cc22032a3453be762.js",
   "service-worker.js": "/SoundCloud-Hooks/service-worker.js",
-  "static/css/main.428bf61a.chunk.css.map": "/SoundCloud-Hooks/static/css/main.428bf61a.chunk.css.map"
+  "static/css/main.8b8a8774.chunk.css.map": "/SoundCloud-Hooks/static/css/main.8b8a8774.chunk.css.map"
 }
