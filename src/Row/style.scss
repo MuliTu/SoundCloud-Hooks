@@ -1,6 +1,7 @@
 .art {
   position: relative;
   text-align: center;
+  cursor: pointer;
   &:active {
     box-shadow: inset 0 0 10px gainsboro;
   }

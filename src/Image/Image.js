@@ -1,7 +1,9 @@
 import React , { useState } from 'react';
 import {useAppContext} from "../hook";
+import {API_KEY} from "../api";
 
 const Image = () => {
+
     const [isHidden, setIsHidden] = useState(true);
     const {state: {currentTrack}} = useAppContext();
     const isEmpty = () => {
@@ -9,8 +11,8 @@ const Image = () => {
     };
 
     const playMusic = () => {
-        var x = document.getElementById('audio');
-        x.play();
+        const audio = document.getElementById('audio');
+        audio.play();
         setIsHidden(false)
     };
     return (
@@ -21,7 +23,8 @@ const Image = () => {
                         src={currentTrack.artwork_url} width={290} alt={'art poster'}/>
                     <audio
                     controls={!isHidden}
-                        id='audio' src={`${currentTrack.uri}/stream?client_id=ggX0UomnLs0VmW7qZnCzw`}
+                        id='audio'
+                    src={`${currentTrack.uri}/stream?client_id=${API_KEY}`}
                            preload='auto'
                            itemType={`audio/${currentTrack.original_format}`}>
                         Sound
