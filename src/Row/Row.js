@@ -1,23 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './style.scss'
 import {useAppContext} from "../hook";
+
 const Row = ({data, index, view}) => {
+    const {dispatch} = useAppContext();
+
+    const [isAnimetd, setIsAnimated] = useState(false);
+
+    const afterAnimation = () => {
+        setIsAnimated(false);
+        dispatch({type: 'TRACK', payload: data})
+    };
+
     return (
-        <div>
-        {
-            view?
-                <div className='track art'>
-                    <img  src={data.artwork_url} alt='poster' width={200}/>
-                    <div className='track-data'>
-                        {index + 1}. {data.title}
-                    </div>
-                </div>
-                :
-                <div className='track'>
-                    {index + 1}. {data.title}
-                </div>
-        }
-        </div>
+        view ?
+
+            <div
+                onClick={() => setIsAnimated(true)}
+                className={`art ${isAnimetd ? 'fly' : ''}`}
+                onAnimationEnd={() => afterAnimation()}>
+                <img src={data.artwork_url}
+                     alt='poster'
+                     width={200}
+                />
+            </div>
+            :
+            <div
+                onClick={() => setIsAnimated(true)}
+                className={`track ${isAnimetd ? 'fly' : ''}`}
+                onAnimationEnd={() => afterAnimation()}>
+                {index + 1}. {data.title}
+            </div>
 
     );
 };

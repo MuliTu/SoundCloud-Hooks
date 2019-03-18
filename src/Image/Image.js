@@ -1,18 +1,35 @@
-import React from 'react';
-import ReactPlayer from 'react-player'
+import React , { useState } from 'react';
 import {useAppContext} from "../hook";
 
 const Image = () => {
-    const { state:{currentTrack} }= useAppContext();
+    const [isHidden, setIsHidden] = useState(true);
+    const {state: {currentTrack}} = useAppContext();
+    const isEmpty = () => {
+        return Object.keys(currentTrack).length > 0
+    };
+
+    const playMusic = () => {
+        var x = document.getElementById('audio');
+        x.play();
+        setIsHidden(false)
+    };
     return (
-        <div className='container'>
-            <ReactPlayer
-                url={currentTrack.uri}
-                volume={1.000}
-                controls={true}
-                width={'100%'}
-                height={'100%'}
-                />
+        <div className='container '>
+            {isEmpty() ?
+                <div>
+                    <img onClick={playMusic}
+                        src={currentTrack.artwork_url} width={290} alt={'art poster'}/>
+                    <audio
+                    controls={!isHidden}
+                        id='audio' src={`${currentTrack.uri}/stream?client_id=ggX0UomnLs0VmW7qZnCzw`}
+                           preload='auto'
+                           itemType={`audio/${currentTrack.original_format}`}>
+                        Sound
+                    </audio>
+                </div>
+                :
+                <h6>Choose track</h6>}
+
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState } from 'react'
 
 import Row from "../Row/Row";
 import IconButton from "../smallComponents/IconButton/IconButton";
@@ -18,7 +18,7 @@ export const Search = () => {
     const myFilter = (track, trackIndex) => trackIndex >= index && trackIndex < (index + INDEX_INCREMENT);
 
     const trackEntity = (track, index) => (
-        <div key={index} onClick={() => dispatch({type: 'TRACK', payload: track})}>
+        <div key={index}>
             <Row index={index} data={track} view={viewMode}/>
         </div>
     );
