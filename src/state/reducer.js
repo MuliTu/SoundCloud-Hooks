@@ -5,7 +5,7 @@ import {
     TRACK,
     UPDATE_LIST,
     UPDATE_QUERY
-} from "./types";
+} from './types';
 
 export const initialState = {
     viewMode: Boolean(localStorage.getItem('view') === 'true'),
@@ -19,11 +19,13 @@ const reducer = (state, action) => {
     switch (action.type) {
         case TRACK:
             const index = state.tracksList.indexOf(action.payload);
-            const newTrackList = [...state.tracksList.slice(0,index),...state.tracksList.slice(index +1 , state.tracksList.length)];
-            if(state.currentTrack){
-                return {...state,
+            const newTrackList = [...state.tracksList.slice(0, index), ...state.tracksList.slice(index + 1, state.tracksList.length)];
+            if (state.currentTrack) {
+                return {
+                    ...state,
                     tracksList: [...newTrackList, state.currentTrack],
-                    currentTrack: action.payload};
+                    currentTrack: action.payload
+                };
             }
             return {...state, tracksList: newTrackList, currentTrack: action.payload};
 

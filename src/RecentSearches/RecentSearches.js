@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppContext } from "../hook";
+import { useAppContext } from '../hook';
 
 const RecentSearches = () => {
     const {dispatch, state: {history}} = useAppContext();

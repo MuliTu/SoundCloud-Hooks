@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import Row from "../Row/Row";
-import IconButton from "../smallComponents/IconButton/IconButton";
-import Input from "../smallComponents/Input/Input";
-import {useAppContext} from "../hook";
+import Row from '../Row/Row';
+import IconButton from '../smallComponents/IconButton/IconButton';
+import Input from '../smallComponents/Input/Input';
+import {useAppContext} from '../hook';
 import './style.scss'
 
 export const Search = () => {

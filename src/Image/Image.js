@@ -1,6 +1,6 @@
 import React , { useState } from 'react';
-import {useAppContext} from "../hook";
-import {API_KEY} from "../api";
+import {useAppContext} from '../hook';
+import {API_KEY} from '../api';
 
 const Image = () => {
 

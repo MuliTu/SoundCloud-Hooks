@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './style.scss'
-import {useAppContext} from "../hook";
+import { useAppContext } from '../hook';
 
 const Row = ({data, index, view}) => {
-    const {dispatch} = useAppContext();
-
+    const { dispatch } = useAppContext();
     const [isAnimetd, setIsAnimated] = useState(false);
-
     const afterAnimation = () => {
         setIsAnimated(false);
         dispatch({type: 'TRACK', payload: data})
@@ -14,10 +12,9 @@ const Row = ({data, index, view}) => {
 
     return (
         view ?
-
             <div
                 onClick={() => setIsAnimated(true)}
-                className={`art ${isAnimetd ? 'fly' : ''}`}
+                className={`${isAnimetd ? 'art fly' : 'art'}`}
                 onAnimationEnd={() => afterAnimation()}>
                 <img src={data.artwork_url}
                      alt='poster'
