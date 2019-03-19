@@ -6,6 +6,7 @@ const Image = () => {
 
     const [isHidden, setIsHidden] = useState(true);
     const {state: {currentTrack}} = useAppContext();
+
     const isEmpty = () => {
         return Object.keys(currentTrack).length > 0
     };
@@ -16,7 +17,7 @@ const Image = () => {
         setIsHidden(false)
     };
     return (
-        <div className='container '>
+        <div className='container' id='imageComponent'>
             {isEmpty() ?
                 <div>
                     <img onClick={playMusic}
@@ -24,7 +25,7 @@ const Image = () => {
                     <audio
                     controls={!isHidden}
                         id='audio'
-                    src={`${currentTrack.uri}/stream?client_id=${API_KEY}`}
+                    src={`${currentTrack.stream_url}?client_id=${API_KEY}`}
                            preload='auto'
                            itemType={`audio/${currentTrack.original_format}`}>
                         Sound

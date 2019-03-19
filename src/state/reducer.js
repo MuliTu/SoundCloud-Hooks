@@ -30,6 +30,7 @@ const reducer = (state, action) => {
             return {...state, tracksList: newTrackList, currentTrack: action.payload};
 
         case UPDATE_LIST:
+
             return {...state, tracksList: action.payload};
 
         case UPDATE_QUERY:

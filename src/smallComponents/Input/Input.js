@@ -9,7 +9,6 @@ const Input = () => {
     const {dispatch, state: {query}} = useAppContext();
     const [myQuery, setQuery] = useState('');
     const [results, setResults] = useState([]);
-
     const queryChangeHandler = (e) => setQuery(e.target.value);
 
     useEffect(() => {

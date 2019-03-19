@@ -4,6 +4,7 @@ import Image from './Image/Image';
 import RecentSearches from './RecentSearches/RecentSearches';
 import reducer, {initialState} from './state/reducer';
 import Context from './state/context'
+
 import './App.scss';
 
  const App = () => {

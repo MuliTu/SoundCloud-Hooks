@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './style.scss'
-import { useAppContext } from '../hook';
+import {useAppContext} from '../../hook';
 
-const Row = ({data, index, view}) => {
-    const { dispatch } = useAppContext();
+const Track = ({data, index}) => {
+    const {dispatch, state: {viewMode}} = useAppContext();
     const [isAnimetd, setIsAnimated] = useState(false);
-    const afterAnimation = () => {
+
+    function afterAnimation() {
         setIsAnimated(false);
         dispatch({type: 'TRACK', payload: data})
-    };
+    }
 
     return (
-        view ?
+
+        viewMode ?
             <div
                 onClick={() => setIsAnimated(true)}
                 className={`${isAnimetd ? 'art fly' : 'art'}`}
@@ -24,7 +26,7 @@ const Row = ({data, index, view}) => {
             :
             <div
                 onClick={() => setIsAnimated(true)}
-                className={`track ${isAnimetd ? 'fly' : ''}`}
+                className={` ${isAnimetd ? 'track fly' : 'track'}`}
                 onAnimationEnd={() => afterAnimation()}>
                 {index + 1}. {data.title}
             </div>
@@ -32,4 +34,4 @@ const Row = ({data, index, view}) => {
     );
 };
 
-export default Row;
+export default Track;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import Row from '../Row/Row';
+import Track from '../smallComponents/Track/Track';
 import IconButton from '../smallComponents/IconButton/IconButton';
 import Input from '../smallComponents/Input/Input';
 import {useAppContext} from '../hook';
@@ -8,7 +8,6 @@ import './style.scss'
 
 export const Search = () => {
     const {dispatch, state: {tracksList, viewMode}} = useAppContext();
-
     const INDEX_INCREMENT = 6;
     const [index, setIndex] = useState(0);
 
@@ -17,9 +16,9 @@ export const Search = () => {
 
     const myFilter = (track, trackIndex) => trackIndex >= index && trackIndex < (index + INDEX_INCREMENT);
 
-    const trackEntity = (track, index) => (
+    const searchResult = (track, index) => (
         <div key={index}>
-            <Row index={index} data={track} view={viewMode}/>
+            <Track index={index} data={track} view={viewMode}/>
         </div>
     );
 
@@ -29,7 +28,7 @@ export const Search = () => {
             <Input/>
             <div className='search-results'>
                 {
-                    tracksList.map(trackEntity).filter(myFilter)
+                    tracksList.map(searchResult).filter(myFilter)
                 }
             </div>
             <div>
