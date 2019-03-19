@@ -6,10 +6,10 @@ import Input from '../smallComponents/Input/Input';
 import {useAppContext} from '../hook';
 import './style.scss'
 import {getTracks} from "../functions";
+import {getOnly, incrementIndex} from "../utils";
 
 export const Search = () => {
     const {dispatch, state: {tracksList, viewMode}} = useAppContext();
-    const INDEX_INCREMENT = 6;
     const [index, setIndex] = useState(0);
 
     async function fetchDataFromAPI(query) {
@@ -17,9 +17,9 @@ export const Search = () => {
         dispatch({type: 'UPDATE_LIST', payload:await getTracks(query)})
     }
 
-    const incrementIndex = () => setIndex((index + INDEX_INCREMENT) > tracksList.length ? 0 : index + INDEX_INCREMENT);
+    const onClickNext = () => setIndex(incrementIndex(index,tracksList));
 
-    const myFilter = (track, trackIndex) => trackIndex >= index && trackIndex < (index + INDEX_INCREMENT);
+    // const myFilter = (track, trackIndex) => trackIndex >= index && trackIndex < (index + INDEX_INCREMENT);
 
     const searchResult = (track, index) => (
         <div key={index}>
@@ -34,12 +34,12 @@ export const Search = () => {
             <Input onClickFetchData={(query)=>fetchDataFromAPI(query)}/>
             <div className='search-results'>
                 {
-                    tracksList.map(searchResult).filter(myFilter)
+                    tracksList.map(searchResult).filter((track, trackIndex) => getOnly(track,trackIndex,index))
                 }
             </div>
             <div>
                 <IconButton className={'next-button'}
-                            onClick={incrementIndex}
+                            onClick={onClickNext}
                             icon={'fa-chevron-circle-right'}/>
 
                 <IconButton className={'view-buttons'}
