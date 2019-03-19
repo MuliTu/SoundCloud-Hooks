@@ -5,27 +5,18 @@ import {useAppContext} from "../../hook";
 import './style.scss'
 
 
-const Input = () => {
+const Input = ({onClickFetchData}) => {
     const {dispatch, state: {query}} = useAppContext();
     const [myQuery, setQuery] = useState('');
-    const [results, setResults] = useState([]);
     const queryChangeHandler = (e) => setQuery(e.target.value);
+    const addToRecentSearches = (query) => dispatch({type: 'ADD_TO_RECENT_SEARCHERS', payload: query});
 
     useEffect(() => {
         if (query !== myQuery) {
             setQuery(query);
-            fetchDataFromAPI(query).finally()
+            onClickFetchData(query)
         }
-        dispatch({type: 'UPDATE_LIST', payload: results})
-    }, [query, results]);
-
-    async function fetchDataFromAPI(query) {
-        dispatch({type: 'UPDATE_QUERY', payload: query});
-        setResults(await getTracks(query));
-    }
-
-    const addToRecentSearches = (query) => dispatch({type: 'ADD_TO_RECENT_SEARCHERS', payload: query});
-
+    }, [query]);
 
     return (
         <div className='input-wrapper'>
@@ -33,7 +24,8 @@ const Input = () => {
                    value={myQuery}
                    placeholder={'Search...'}
                    onChange={queryChangeHandler}/>
-            <IconButton onClick={() => fetchDataFromAPI(myQuery).then(addToRecentSearches(myQuery))} icon={'fa-search'}/>
+            <IconButton onClick={() => onClickFetchData(myQuery).then(addToRecentSearches(myQuery))}
+                        icon={'fa-search'}/>
         </div>
     );
 };
