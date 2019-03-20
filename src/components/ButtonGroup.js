@@ -1,5 +1,5 @@
-import IconButton from "./smallComponents/IconButton/IconButton";
-import React from "react";
+import IconButton from './IconButton/IconButton';
+import React from 'react';
 
 export const ButtonGroup = ({onClickNext, dispatch}) => {
     return (
@@ -17,4 +17,4 @@ export const ButtonGroup = ({onClickNext, dispatch}) => {
                         icon={'fa-table'}/>
         </div>
     )
-}
+};

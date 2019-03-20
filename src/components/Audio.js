@@ -1,5 +1,5 @@
-import {API_KEY} from "../api";
-import React from "react";
+import {API_KEY} from '../api';
+import React from 'react';
 
 export const Audio = ({path, type, isHidden}) => {
     return (

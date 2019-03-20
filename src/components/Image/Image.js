@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {useAppContext} from '../hook';
-import {isEmpty, playMusic} from "./utilis";
-import {AlbumArt} from "../smallComponents/AlbomArt";
-import {Audio} from "../smallComponents/Audio";
-import {Div} from "../Div";
+import {useAppContext} from '../../hook';
+import {isEmpty, playMusic} from './utilis';
+import {AlbumArt} from '../AlbomArt';
+import {Audio} from '../Audio';
+import {Div} from '../Div';
 
 const Image = () => {
     const [isHidden, setIsHidden] = useState(true);

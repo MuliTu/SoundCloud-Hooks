@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 const noImageSrc = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png';
 
 export const AlbumArt = ({path,onClickFunction}) => {

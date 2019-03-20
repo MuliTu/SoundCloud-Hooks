@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import IconButton from "../IconButton/IconButton";
-import {useAppContext} from "../../hook";
+import IconButton from '../IconButton/IconButton';
+import {useAppContext} from '../../hook';
 import './style.scss'
 
 

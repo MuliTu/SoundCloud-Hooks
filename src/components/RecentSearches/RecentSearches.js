@@ -1,5 +1,5 @@
 import React from 'react';
-import {useAppContext} from '../hook';
+import {useAppContext} from '../../hook';
 import {Div} from "../Div";
 
 const RecentSearches = () => {

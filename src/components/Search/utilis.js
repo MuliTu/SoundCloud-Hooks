@@ -1,4 +1,4 @@
-import {API_KEY} from '../api';
+import {API_KEY} from '../../api';
 
 const INDEX_INCREMENT = 6;
 
@@ -8,7 +8,8 @@ export async function getTracks(query) {
     return response.json()
 
 }
-export const indexLimitation = (index, size ) => {
+
+export const indexLimitation = (index, size) => {
     return (index + INDEX_INCREMENT) > size ? size % (index + INDEX_INCREMENT) : (index + INDEX_INCREMENT)
 };
 

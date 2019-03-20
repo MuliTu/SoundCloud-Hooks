@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
-import {Search} from './Search/Search';
-import Image from './Image/Image';
-import RecentSearches from './RecentSearches/RecentSearches';
+import {Search} from './components/Search/Search';
+import Image from './components/Image/Image';
+import RecentSearches from './components/RecentSearches/RecentSearches';
 import reducer, {initialState} from './state/reducer';
 import Context from './state/context'
 

@@ -1,6 +1,6 @@
-import React from "react";
-import Track from "./smallComponents/Track/Track";
-import {indexLimitation} from "./Search/utilis";
+import React from 'react';
+import Track from './Track/Track';
+import {indexLimitation} from './Search/utilis';
 
 export const SearchResults = ({data, view, index}) => {
     return (
