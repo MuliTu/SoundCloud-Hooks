@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import IconButton from "../IconButton/IconButton";
-import {getTracks} from "../../functions";
 import {useAppContext} from "../../hook";
 import './style.scss'
 
@@ -20,8 +19,7 @@ const Input = ({onClickFetchData}) => {
 
     return (
         <div className='input-wrapper'>
-            <input className='input'
-                   value={myQuery}
+            <input value={myQuery}
                    placeholder={'Search...'}
                    onChange={queryChangeHandler}/>
             <IconButton onClick={() => onClickFetchData(myQuery).then(addToRecentSearches(myQuery))}

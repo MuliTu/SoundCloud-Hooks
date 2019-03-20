@@ -1,40 +1,34 @@
-import React , { useState } from 'react';
+import React, {useState} from 'react';
 import {useAppContext} from '../hook';
-import {API_KEY} from '../api';
+import {isEmpty, playMusic} from "./utilis";
+import {AlbumArt} from "../smallComponents/AlbomArt";
+import {Audio} from "../smallComponents/Audio";
+import {Div} from "../Div";
 
 const Image = () => {
-
     const [isHidden, setIsHidden] = useState(true);
     const {state: {currentTrack}} = useAppContext();
 
-    const isEmpty = () => {
-        return Object.keys(currentTrack).length > 0
-    };
-
-    const playMusic = () => {
-        const audio = document.getElementById('audio');
-        audio.play();
-        setIsHidden(false)
-    };
     return (
-        <div className='container' id='imageComponent'>
-            {isEmpty() ?
-                <div>
-                    <img onClick={playMusic}
-                        src={currentTrack.artwork_url} width={290} alt={'art poster'}/>
-                    <audio
-                    controls={!isHidden}
-                        id='audio'
-                    src={`${currentTrack.stream_url}?client_id=${API_KEY}`}
-                           preload='auto'
-                           itemType={`audio/${currentTrack.original_format}`}>
-                        Sound
-                    </audio>
-                </div>
-                :
-                <h6>Choose track</h6>}
-
-        </div>
+        <Div>
+            {
+                isEmpty(currentTrack)
+                    ?
+                    <div>
+                        <AlbumArt
+                            path={currentTrack.artwork_url}
+                            onClickFunction={() => {
+                                playMusic();
+                                setIsHidden(false)
+                            }}/>
+                        <Audio path={currentTrack.stream_url}
+                               isHidden={isHidden}
+                               type={currentTrack.original_format}/>
+                    </div>
+                    :
+                    <h6>Choose track</h6>
+            }
+        </Div>
     );
 };
 

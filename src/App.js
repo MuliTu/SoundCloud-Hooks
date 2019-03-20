@@ -7,7 +7,7 @@ import Context from './state/context'
 
 import './App.scss';
 
- const App = () => {
+const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
